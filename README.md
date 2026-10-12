@@ -1,11 +1,30 @@
 # AngloVie — SILFA · UCBH
 
-Version 3.3.1, October 2026. Created by Nelly Folefack.
+Version 3.5, October 2026. Created by Nelly Folefack.
 
 AngloVie is the English learning pathway in SILFA. FrancoVie is a separate French learning application and is not included in this project. Learners can use the app and peer support entirely remotely. Workplace immersion and Tremplin support are optional, arranged with UCBH.
 
-## This version
+## New in 3.5: Essential English
 
+Open **Learn → Explore essential English**, or use the new panel on Home. The module is also in **Build your sentences**.
+
+- 30 mini-lessons, organized into prepositions, linking ideas, adverbs, go/keep and useful phrases.
+- 124 meaning-and-pattern cards, with everyday and workplace examples. Each lesson explains the important exceptions and common errors **before** opening practice.
+- 90 matching pairs and 91 contextual multiple-choice questions: **181 scored responses**. Match examples to meanings, complete sentences and identify the correct construction. Matching choices are shuffled and work with a mouse, touch or keyboard.
+- Feedback explains every checked answer. Learners can retry their mistakes, repeat a lesson, search for a word or pattern, and filter lessons requiring review.
+- The current lesson, phase, selected answers, checked answers, mistakes and best score persist on the device and in the existing JSON backup. Older backups remain compatible.
+- Topic colours change across five lesson families. Simple embedded diagrams illustrate position words. Examples have optional device speech playback.
+- These lessons and exercises work without an AI subscription, including offline after installation, or by opening the standalone HTML.
+
+The supplied study cards were reorganized and corrected rather than reproduced as screenshots. Corrections include **discuss the project** without *about*, **between** for more than two distinct parties, **despite** without *of*, **although + clause**, the word order of **enough**, and the distinction between conjunctions and linking adverbs. Examples and questions were written for AngloVie. Longer phrases have additional uses beyond the essentials covered here.
+
+The score is for practice, not a certified language level. Completing a lesson means checking all its activities; the score and review marker separately show answers that need more practice. Learners may revisit rules at any time.
+
+## Existing features retained
+
+- Six coordinated page palettes: blue, violet, coral, rose, indigo and cyan. Main navigation, learning steps, vocabulary selections and email categories change the page background and accents. Coloured learning cards show the destination before opening it.
+- A saved appointment ribbon appears across the app, including Home. My support holds the date, time, time zone, meeting format, optional location and secure meeting link. Details survive reload and offline use and are included in progress backups. Past appointments stay visible until edited or removed.
+- The existing UCBH external booking link is retained. After booking, learners record the confirmed details in My support. This is local appointment tracking: there is no automatic calendar synchronization, notification, booking creation or external cancellation. Removing a reminder affects only the record in this app and leaves practice notes intact.
 - AI access now separates server availability, learner code activation and permission to send exercises. Missing functions, offline use, invalid codes and blocked session cookies have explicit messages and retry controls. The downloaded HTML does not show a misleading activation or consent button.
 - A successful access-code response is followed by a server session check. Failed AI requests preserve the learner’s unsent text; expired sessions return to code entry. Long conversations keep a valid user-first message window.
 - **Write an email:** 10 editable models for information requests, appointments, rescheduling, reporting a problem or absence, colleague support, meeting requests, follow-up, job applications and interview thank-you messages.
@@ -15,7 +34,7 @@ AngloVie is the English learning pathway in SILFA. FrancoVie is a separate Frenc
 - English navigation, instructions, vocabulary definitions, practice prompts, messages and exported summaries.
 - Full-width desktop layout. The **Full screen** button enters browser full-screen mode where supported. Use **Exit full screen** or Escape to leave it. Mobile layouts remain responsive.
 - 951 vocabulary cards grouping 1,020 learning contexts, including the 555 additions from the enriched source file. Each context has a learning step and suggested A1–B2 difficulty. These are editorial guides, not validated CEFR ratings.
-- Six learning steps, 28 lessons, 10 practice scenarios and 17 learning modules.
+- Six learning steps, 28 original grammar lessons, 30 Essential English mini-lessons, 10 practice scenarios and 18 learning modules.
 - Guided sessions of 5, 8, 10 or 12 cards, based on the chosen 5, 10, 15 or 20-minute intention. Sessions are not timed.
 - Vocabulary search and filters by step, difficulty, topic, type and review status. English meanings replace the previous French definitions.
 - Slow, steady and normal speech playback, using the English voices available on the device.
@@ -76,6 +95,11 @@ The session history keeps the most recent 60 sessions and the journal keeps the 
 
 ## Verification
 
+Version 3.5 was checked in Chromium: read-before-practice gating; mouse and keyboard matching; wrong-answer explanations; retrying mistakes; all 30 lesson paths (181 correct responses); best scores; saved unanswered selections and checked answers after reload; JSON export/import; older 3.4 backup compatibility; preservation of appointments, email drafts and favourite words; five topic palettes; standalone HTML; and offline reload. Layouts were checked at 320, 390, 768, 1,440 and 1,920 pixels, with visual review on desktop and mobile. The new exercises use deterministic local checking, not AI correction.
+
+
+Version 3.4 was checked for distinct main-page and six-step colours, vocabulary/email theme changes, valid appointment date and time, secure meeting links, a visible reminder across main pages, reload/offline persistence, notes export and JSON restoration, legacy appointment data, retaining past dates, and confirmation before local removal. Responsive layouts were checked from 320 to 1,920 pixels, with desktop and mobile visual review.
+
 The 3.3.1 access flow was checked with controlled server responses: missing/HTML endpoint, absent configuration, network failure, invalid code, code accepted with no retained session, verified login, separate consent, successful chat, long conversation history, failed-response draft preservation, session expiry and reactivation, sign-out, offline state, standalone HTML state and responsive layouts. Backend signed-session tests also passed. Provider responses were mocked; no live Anthropic connection or deployment was verified.
 
 The email studio was checked in Chromium: all 10 models, category filtering, interactive structure, live preview with escaped user text, separate drafts, clipboard and text export, placeholder reminders, checklist resets, backup restoration, older backup compatibility, the six existing practice challenges, and offline reload. Layouts were checked at 320, 390, 768, 1,280 and 1,920 pixels, with desktop and mobile screenshot review. The guided vocabulary regression checks also passed.
@@ -95,3 +119,11 @@ Targeted language corrections used Cambridge Dictionary and English Grammar Toda
 - https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Making_PWAs_installable
 - https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Offline_and_background_operation
 - https://docs.netlify.com/build/functions/api/
+
+Additional references for the new mini-lessons:
+
+- https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/contrasting-ideas-although-despite-others
+- https://learnenglish.britishcouncil.org/free-resources/grammar/b1-b2/using-enough
+- https://dictionary.cambridge.org/grammar/british-grammar/prepositions_2
+- https://dictionary.cambridge.org/grammar/british-grammar/conjunctions
+- https://dictionary.cambridge.org/dictionary/english/go
