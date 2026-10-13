@@ -1,0 +1,52 @@
+# AngloVie: publish the app and both server functions from a flat GitHub upload.
+# Existing Netlify environment variables remain in the Netlify dashboard.
+[build]
+  command = '''node -e "
+const fs = require('node:fs');
+const path = require('node:path');
+const out = '.anglovie-build';
+const mappings = [
+  ['index.html', ['index.html'], 'public/index.html'],
+  ['sw.js', ['sw.js'], 'public/sw.js'],
+  ['manifest.webmanifest', ['manifest.webmanifest'], 'public/manifest.webmanifest'],
+  ['favicon.svg', ['favicon.svg', 'icons/favicon.svg'], 'public/icons/favicon.svg'],
+  ['icon-192.png', ['icon-192.png', 'icons/icon-192.png'], 'public/icons/icon-192.png'],
+  ['icon-512.png', ['icon-512.png', 'icons/icon-512.png'], 'public/icons/icon-512.png'],
+  ['icon-maskable.png', ['icon-maskable.png', 'icons/icon-maskable.png'], 'public/icons/icon-maskable.png'],
+  ['auth.js', ['auth.js', 'netlify/functions/auth.js'], 'functions/auth.js'],
+  ['claude.js', ['claude.js', 'netlify/functions/claude.js'], 'functions/claude.js'],
+  ['session.cjs', ['session.cjs', 'netlify/lib/session.cjs'], 'lib/session.cjs']
+];
+const selected = mappings.map(([name, options, target]) => {
+  const source = options.find(p => fs.existsSync(p) && fs.statSync(p).isFile());
+  if (!source) throw new Error('Missing AngloVie file: ' + name);
+  return { source, target };
+});
+fs.rmSync(out, { recursive: true, force: true });
+for (const { source, target } of selected) {
+  const destination = path.join(out, target);
+  fs.mkdirSync(path.dirname(destination), { recursive: true });
+  fs.copyFileSync(source, destination);
+}
+console.log('AngloVie ready: 7 public files, auth + claude functions, and shared session helper.');
+"'''
+  publish = ".anglovie-build/public"
+  functions = ".anglovie-build/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
